@@ -27,7 +27,7 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   void initState() {
     super.initState();
 
-    // load articles 
+    // load articles
 
     BlocProvider.of<CarouselSectionBloc>(
       context,
@@ -51,7 +51,6 @@ class _CarouselWidgetState extends State<CarouselWidget> {
     }
   }
 
- 
   @override
   void dispose() {
     _timer?.cancel();
@@ -61,8 +60,6 @@ class _CarouselWidgetState extends State<CarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
-  
-
     return BlocBuilder<CarouselSectionBloc, CarouselSectionState>(
       builder: (context, state) {
         if (state is CarouselSectionLoading) {
@@ -77,7 +74,6 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                   controller: _pageController,
                   itemCount: state.articles.length,
                   itemBuilder: (context, index) {
-                   
                     final title = state.articles[index].title;
                     final description = state.articles[index].description;
                     final imageUrl = _randomImages[index];
@@ -129,8 +125,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+
+              Container(
+                color: Colors.white,
+                width: double.infinity,
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(bottom: 18),
+                padding: const EdgeInsets.all(8),
                 child: SmoothPageIndicator(
                   controller: _pageController,
                   count: state.articles.length,

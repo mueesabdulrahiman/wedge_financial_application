@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => CarouselSectionBloc(CarouselRepository()),
       child: MaterialApp(
-        title: 'Hoxton Wealth Project',
+        title: 'Wedge Financial Application',
         debugShowCheckedModeBanner: false,
        
         home: SplashScreen(),

@@ -13,6 +13,8 @@ class PasswordScreen extends StatefulWidget {
 class _PasswordScreemState extends State<PasswordScreen> {
   String password = '';
 
+  bool _visible = false;
+
   final TextEditingController _controller = TextEditingController();
 
   bool get isProperLength => password.length >= 8 && password.length <= 16;
@@ -25,6 +27,8 @@ class _PasswordScreemState extends State<PasswordScreen> {
 
   bool get hasSpecialChar =>
       password.contains(RegExp(r'[!@#\$%^&*(),.?":{}|<>]'));
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -63,25 +67,38 @@ class _PasswordScreemState extends State<PasswordScreen> {
               ),
               SizedBox(height: 30),
               Text('Password', style: TextStyle(fontSize: 15.0)),
-              TextFormField(
-                obscureText: true,
-                controller: _controller,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+              Form(
+                key: _formKey,
+
+                child: TextFormField(
+                  obscureText: !_visible,
+                  controller: _controller,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () => setState(() => _visible = !_visible),
+                      icon:
+                          _visible
+                              ? Icon(Icons.visibility)
+                              : Icon(Icons.visibility_off),
+                    ),
                   ),
-                  suffixIcon: IconButton(
-                    onPressed: () {},
-                    icon: Icon(Icons.visibility_off),
-                  ),
+                  validator: (value) {
+                    if (value == null ||
+                        value.isEmpty ||
+                        !isProperLength ||
+                        !hasUppercase ||
+                        !hasLowercase ||
+                        !hasNumber ||
+                        !hasSpecialChar) {
+                      return 'Please enter a valid password';
+                    } else {
+                      return null;
+                    }
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a valid email';
-                  } else {
-                    return null;
-                  }
-                },
               ),
               SizedBox(height: 10),
               Text(
@@ -90,7 +107,7 @@ class _PasswordScreemState extends State<PasswordScreen> {
               ),
               SizedBox(height: 10),
 
-              // Updated requirement rules
+              //  requirement rules
               PasswordRequirement(
                 text: "8–16 characters long",
                 isMet: isProperLength,
@@ -130,11 +147,13 @@ class _PasswordScreemState extends State<PasswordScreen> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: (_) => AnimatedLoadingDashboardScreen(),
-                    ),
-                  );
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => AnimatedLoadingDashboardScreen(),
+                      ),
+                    );
+                  }
                 },
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(Color(0xFF004731)),

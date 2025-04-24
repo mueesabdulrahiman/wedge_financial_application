@@ -34,7 +34,7 @@ Container buildAssetsAndLiabilitiesSection() {
                       ),
                     ],
                   ),
-                  Divider(color: Colors.green, thickness: 2),
+                  Divider(color: Color(0xFF004731), thickness: 3),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

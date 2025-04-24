@@ -15,7 +15,6 @@ class AnimatedLoadingLine4 extends StatelessWidget {
         duration: const Duration(milliseconds: 500),
         curve: Curves.easeInOut,
         height: 80,
-        //  transform: isPhase2 ? Matrix4.translationValues(0, 0, 0) : Matrix4.translationValues(0, 20, 0),
         padding: const EdgeInsets.only(bottom: 6),
         child: ShaderMask(
           shaderCallback: (Rect bounds) {
@@ -41,9 +40,8 @@ class AnimatedLoadingLine4 extends StatelessWidget {
               AnimatedSwitcher(
                 duration: Duration(milliseconds: 300),
                 child: phase >= 3
-                    ? change1(phase)
+                    ? IconChange(phase)
                     : Container(
-                      //  duration: const Duration(milliseconds: 500),
                       width: 22,
                       height: 22,
                       decoration: BoxDecoration(
@@ -80,7 +78,7 @@ class AnimatedLoadingLine4 extends StatelessWidget {
   }
 }
 
-Widget change1(int phase) {
+Widget IconChange(int phase) {
   return SizedBox(
     height: 28,
     width: 28,

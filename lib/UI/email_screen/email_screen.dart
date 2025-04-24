@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:hoxton_wealth_project/UI/password_screen/password_screen.dart';
 
 class EmailScreen extends StatelessWidget {
-   EmailScreen({super.key});
+  EmailScreen({super.key});
 
-final  _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
+
+  bool isValidEmail(String input) {
+    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+
+    return emailRegex.hasMatch(input);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +42,9 @@ final  _formKey = GlobalKey<FormState>();
                     ),
                   ),
                   validator: (value) {
-                    if (value == null || value.isEmpty) {
+                    if (value == null || value.isEmpty || !isValidEmail(value)) {
                       return 'Please enter a valid email';
-                    }else{
+                    } else {
                       return null;
                     }
                   },
@@ -53,12 +59,11 @@ final  _formKey = GlobalKey<FormState>();
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  //if(_formKey.currentState!.validate()){
-                     Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context) => PasswordScreen()),
-                  );
-               //   }
-                 
+                  if (_formKey.currentState!.validate()) {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => PasswordScreen()),
+                    );
+                  }
                 },
                 style: ButtonStyle(
                   backgroundColor: WidgetStateProperty.all(Color(0xFF004731)),

@@ -30,6 +30,8 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _slideController;
   late Animation<Offset> _slideAnimation;
 
+  // text typing animation
+
   void _startTextTypingAnimation() {
     int index = 0;
     const duration = Duration(milliseconds: 60);
@@ -45,6 +47,8 @@ class _SplashScreenState extends State<SplashScreen>
       }
     });
   }
+
+  // text points animation
 
   void _animatePointsSequentially(int index) {
     if (index >= _showPoints.length) return;
@@ -64,10 +68,10 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
 
-    showD();
+    _startAnimation();
   }
 
-  showD() async {
+  _startAnimation() async {
     _slideController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 400),
@@ -187,7 +191,7 @@ class _SplashScreenState extends State<SplashScreen>
 
           if (_showFinalContent)
             AnimatedAlign(
-              alignment: _moveTextToTop ? Alignment.topCenter : Alignment(0, 2),
+              alignment: _moveTextToTop ? Alignment.topCenter : Alignment.center,
               duration: Duration(milliseconds: 600),
               curve: Curves.easeOut,
               child: Padding(
@@ -285,23 +289,45 @@ class _SplashScreenState extends State<SplashScreen>
                           duration: Duration(milliseconds: 400),
                           opacity: _showPoints[index] ? 1.0 : 0.0,
                           child: Padding(
-                            padding: const EdgeInsets.only(bottom: 20.0),
-                            child: ListTile(
-                              leading: SvgPicture.asset(
-                                svgIcons[index],
-                                width: 40,
-                                height: 40,
-                              ),
-
-                              title: Text(
-                                pointTexts[index],
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  fontFamily: 'PTSerif',
-                                  color: Colors.white,
+                            padding: const EdgeInsets.only(bottom: 30.0),
+                            child: Row(
+                              children: [
+                                SvgPicture.asset(
+                                  svgIcons[index],
+                                  width: 40,
+                                  height: 40,
                                 ),
-                              ),
+                                SizedBox(width: 12),
+                                Expanded(
+                                  child: Text(
+                                    pointTexts[index],
+                                    maxLines: 2,
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontFamily: 'PTSerif',
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
+
+                            // ListTile(
+                            //   leading: SvgPicture.asset(
+                            //     svgIcons[index],
+                            //     width: 40,
+                            //     height: 40,
+                            //   ),
+
+                            //   title: Text(
+                            //     pointTexts[index],
+                            //     style: TextStyle(
+                            //       fontSize: 15,
+                            //       fontFamily: 'PTSerif',
+                            //       color: Colors.white,
+                            //     ),
+                            //   ),
+                            // ),
                           ),
                         ),
                       );

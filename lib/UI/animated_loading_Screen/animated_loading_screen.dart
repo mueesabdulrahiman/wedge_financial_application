@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:hoxton_wealth_project/UI/animated_loading_Screen/widgets/animated_loading_line1.dart';
 import 'package:hoxton_wealth_project/UI/animated_loading_Screen/widgets/animated_loading_line3.dart';
 import 'package:hoxton_wealth_project/UI/dashboard_screen/dashboard_screen.dart';
@@ -83,6 +84,16 @@ class _AnimatedLoadingDashboardScreen extends State<AnimatedLoadingDashboardScre
       backgroundColor: Color(0xFF004731),
       body: Stack(
         children: [
+           Positioned(
+            top: 0,
+            left: 0,
+            child: SvgPicture.asset('assets/hoxton-icon-background-1.svg'),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: SvgPicture.asset('assets/hoxton-icon-background-2.svg'),
+          ),
           Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
