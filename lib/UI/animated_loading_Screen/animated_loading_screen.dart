@@ -11,10 +11,12 @@ class AnimatedLoadingDashboardScreen extends StatefulWidget {
   const AnimatedLoadingDashboardScreen({super.key});
 
   @override
-  State<AnimatedLoadingDashboardScreen> createState() => _AnimatedLoadingDashboardScreen();
+  State<AnimatedLoadingDashboardScreen> createState() =>
+      _AnimatedLoadingDashboardScreen();
 }
 
-class _AnimatedLoadingDashboardScreen extends State<AnimatedLoadingDashboardScreen> {
+class _AnimatedLoadingDashboardScreen
+    extends State<AnimatedLoadingDashboardScreen> {
   int phase = 1;
   String animatedDots = "";
   late final ticker;
@@ -79,20 +81,19 @@ class _AnimatedLoadingDashboardScreen extends State<AnimatedLoadingDashboardScre
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Color(0xFF004731),
       body: Stack(
         children: [
-           Positioned(
+          Positioned(
             top: 0,
             left: 0,
-            child: SvgPicture.asset('assets/hoxton-icon-background-1.svg'),
+            child: SvgPicture.asset('assets/icons/background-icon-1.svg'),
           ),
           Positioned(
             bottom: 0,
             right: 0,
-            child: SvgPicture.asset('assets/hoxton-icon-background-2.svg'),
+            child: SvgPicture.asset('assets/icons/background-icon-2.svg'),
           ),
           Center(
             child: Padding(
@@ -101,8 +102,10 @@ class _AnimatedLoadingDashboardScreen extends State<AnimatedLoadingDashboardScre
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Top Title
-                  
-                  AnimatedLoadingLine1(phase: phase, animatedDots: animatedDots),
+                  AnimatedLoadingLine1(
+                    phase: phase,
+                    animatedDots: animatedDots,
+                  ),
 
                   const SizedBox(height: 16),
 
@@ -112,7 +115,6 @@ class _AnimatedLoadingDashboardScreen extends State<AnimatedLoadingDashboardScre
                   const SizedBox(height: 28),
 
                   // Row 1
-
                   AnimatedLoadingLine3(phase: phase),
                   const SizedBox(height: 5),
 
@@ -133,8 +135,3 @@ class _AnimatedLoadingDashboardScreen extends State<AnimatedLoadingDashboardScre
     return "It will only take a moment, John";
   }
 }
-
-
-
-
-

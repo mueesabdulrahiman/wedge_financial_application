@@ -142,12 +142,12 @@ class _SplashScreenState extends State<SplashScreen>
           Positioned(
             top: 0,
             left: 0,
-            child: SvgPicture.asset('assets/hoxton-icon-background-1.svg'),
+            child: SvgPicture.asset('assets/icons/background-icon-1.svg'),
           ),
           Positioned(
             bottom: 0,
             right: 0,
-            child: SvgPicture.asset('assets/hoxton-icon-background-2.svg'),
+            child: SvgPicture.asset('assets/icons/background-icon-2.svg'),
           ),
           AnimatedOpacity(
             opacity: _fadeOutInitialContent ? 0.0 : 1.0,
@@ -162,7 +162,7 @@ class _SplashScreenState extends State<SplashScreen>
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     SvgPicture.asset(
-                      'assets/main_Icon.svg',
+                      'assets/icons/main_Icon.svg',
                       width: 40,
                       height: 40,
                     ),
@@ -191,7 +191,8 @@ class _SplashScreenState extends State<SplashScreen>
 
           if (_showFinalContent)
             AnimatedAlign(
-              alignment: _moveTextToTop ? Alignment.topCenter : Alignment.center,
+              alignment:
+                  _moveTextToTop ? Alignment.topCenter : Alignment.center,
               duration: Duration(milliseconds: 600),
               curve: Curves.easeOut,
               child: Padding(
@@ -273,11 +274,11 @@ class _SplashScreenState extends State<SplashScreen>
                       ];
 
                       final svgIcons = [
-                        'assets/icon-1.svg',
-                        'assets/icon-2.svg',
-                        'assets/Icon-3.svg',
-                        'assets/icon-4.svg',
-                        'assets/icon-1.svg',
+                        'assets/icons/icon-1.svg',
+                        'assets/icons/icon-2.svg',
+                        'assets/icons/Icon-3.svg',
+                        'assets/icons/icon-4.svg',
+                        'assets/icons/icon-1.svg',
                       ];
 
                       return AnimatedSlide(
@@ -312,22 +313,6 @@ class _SplashScreenState extends State<SplashScreen>
                               ],
                             ),
 
-                            // ListTile(
-                            //   leading: SvgPicture.asset(
-                            //     svgIcons[index],
-                            //     width: 40,
-                            //     height: 40,
-                            //   ),
-
-                            //   title: Text(
-                            //     pointTexts[index],
-                            //     style: TextStyle(
-                            //       fontSize: 15,
-                            //       fontFamily: 'PTSerif',
-                            //       color: Colors.white,
-                            //     ),
-                            //   ),
-                            // ),
                           ),
                         ),
                       );

@@ -16,11 +16,11 @@ class _CarouselWidgetState extends State<CarouselWidget> {
   Timer? _timer;
 
   final List<String> _randomImages = [
-    'assets/carousel-image.jpg',
-    'assets/carousel-image.jpg',
-    'assets/carousel-image.jpg',
-    'assets/carousel-image.jpg',
-    'assets/carousel-image.jpg',
+    'assets/carousel-images/artificial-intelligence.jpg',
+    'assets/carousel-images/electric-vehicle.jpg',
+    'assets/carousel-images/Social-Media-and-Mental-Health.jpg',
+    'assets/carousel-images/climate-change.jpeg',
+    'assets/carousel-images/financial-literacy.jpg',
   ];
 
   @override
