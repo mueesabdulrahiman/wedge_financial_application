@@ -26,7 +26,7 @@ Container buildLiabilitiesSection() {
                       SizedBox(height: 8),
                       Text(
                         'You currently have no liabilities added to your profile.',
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                        style: TextStyle(fontSize: 12, color: Colors.black54),
                       ),
                     ],
                   ),

@@ -5,6 +5,7 @@ Widget infoCard({
   required String title,
   required String subtitle,
   required String buttonText,
+  required int maxLines
 }) {
   return Container(
     margin: const EdgeInsets.symmetric(horizontal: 16),
@@ -24,6 +25,7 @@ Widget infoCard({
         Text(
           title,
           textAlign: TextAlign.center,
+          maxLines: maxLines,
 
           style: const TextStyle(
             fontSize: 15,

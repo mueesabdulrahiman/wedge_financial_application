@@ -54,8 +54,9 @@ class DashboardScreen extends StatelessWidget {
                 icon: Icons.trending_up,
                 title: 'Forecast Your Financial Future with WealthFlow',
                 subtitle:
-                    'See how your wealth could grow over time based on your assets, assumptions, and inflation trends.',
+                    'See how your wealth could grow over time. Wealth flow hepls you forcast future projections based on your assets, assumptions, and inflation trends.',
                 buttonText: 'Create Wealth Forecast',
+                maxLines: 3
               ),
               const SizedBox(height: 16),
 
@@ -66,6 +67,7 @@ class DashboardScreen extends StatelessWidget {
                 subtitle:
                     'Track stocks, ETFs, crypto, and currencies – all in one place.',
                 buttonText: 'Start Tracking',
+                maxLines: 2,
               ),
               const SizedBox(height: 16),
 
